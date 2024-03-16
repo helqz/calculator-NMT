@@ -1,21 +1,22 @@
 {
   "name": "calculator-nmt",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "tsc && node ./dist/index.js"
   },
   "keywords": [],
   "author": "helqz",
   "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^20.11.27",
-    "@types/readline-sync": "^1.4.8"
-  },
   "dependencies": {
     "@types/mathjs": "^9.4.2",
     "mathjs": "^12.4.1",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.27",
+    "@types/readline-sync": "^1.4.8"
   },
   "description": ""
 }

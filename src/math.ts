@@ -1,5 +1,21 @@
 export class math {
-  static log(a: number, b:number) {
+  static arithProgres(a1: number, d: number, n: number): number {
+    return a1 + d * (n - 1);
+  }
+
+  static arithProgresArea(a1: number, an: number, n: number): number {
+    return ((a1 + an) / 2) * n;
+  }
+
+  static geomProgres(b1: number, q: number, n: number): number {
+    return b1 * this.raiseToPower(q, n - 1);
+  }
+
+  static geomProgresArea(b1: number, q: number, n: number): number {
+    return (b1 * (this.raiseToPower(q, n) - 1)) / (q - 1);
+  }
+
+  static log(a: number, b: number): number {
     return Math.round(Math.log(b) / Math.log(a));
   }
 

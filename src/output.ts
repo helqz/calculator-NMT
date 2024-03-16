@@ -4,16 +4,16 @@ export class Output {
   static display() {
     console.log('\n--Menu--\n');
     console.log('1. Calculator');
-    console.log('2. Basic operations\n');
+    console.log('2. Raise To Power\n');
     console.log('Algebra');
     console.log(' 3. Combinatorics');
     console.log(' 4. Quadratic Equation');
-    console.log(' 5. Logarithm\n');
+    console.log(' 5. Logarithm');
+    console.log(' 6. Progression\n');
     console.log('Geometry');
-    console.log(' 6. ');
-    console.log(' 7. ');
-    console.log(' 8. ');
-    console.log();
+    console.log(' 7. Area & Perimeter');
+    console.log(' 8. Volume & Surface Area');
+    console.log(' 9. Trigonometry\n');
   }
 
   static choice(n: string) {
@@ -21,6 +21,10 @@ export class Output {
     switch (n) {
       case '1':
         Choice.calculator();
+        break;
+
+      case '2':
+        Choice.raiseToPower();
         break;
 
       case '3':
@@ -35,8 +39,15 @@ export class Output {
         Choice.log();
         break;
 
+      case '6':
+        Choice.progression();
+        break;
+
       case 'node':
         Choice.node();
+        break;
+
+      default:
         break;
     }
   }

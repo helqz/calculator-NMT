@@ -3,45 +3,60 @@ import { math } from './math';
 import { Logic } from './choiceLogic';
 
 export class Choice {
-  static calculator() {
-    let input: string;
+  private static input: string;
 
-    console.log('Mathematic expression \n');
+  private static inputReader(ques: string): boolean {
+    this.input = question(ques);
+
+    if (this.input === 'r') {
+      this.input = '';
+      return true;
+    }
+
+    return false;
+  }
+
+  static calculator() {
+    console.log('Mathematic expression\n');
 
     while (true) {
-      input = question(': ');
-      if (input === 'r') return;
+      if (this.inputReader(': ')) return;
 
-      Logic.calculatorLogic(input);
+      Logic.calculatorLogic(this.input);
+    }
+  }
+
+  static raiseToPower() {
+    console.log('a^b\n');
+
+    while (true) {
+      if (this.inputReader('a, b: ')) return;
+
+      Logic.raiseToPowerLogic(this.input);
     }
   }
 
   static combinatorics() {
     const func: string = question('A, C or P? ').toLowerCase();
-    console.log();
-
-    let input: string;
 
     switch (func) {
       case 'a':
       case 'c':
-        console.log('n: setSize, k: subsetSize \n');
+        console.log('\nn: setSize, k: subsetSize \n');
 
         while (true) {
-          input = question('n, k: ');
-          if (input === 'r') return;
+          if (this.inputReader('n, k: ')) return;
 
-          Logic.combinatoricsLogic(func, input);
+          Logic.combinatoricsLogic(func, this.input);
         }
 
       case 'p':
         console.log('n: setSize \n');
 
         while (true) {
-          input = question('n: ');
-          if (input === 'r') return;
+          if (this.inputReader('n: ')) return;
 
-          console.log(math.factorial(Number(input)));
+          console.log(`\n ${math.factorial(Number(this.input))} \n`);
         }
 
       default:
@@ -50,41 +65,93 @@ export class Choice {
   }
 
   static quadratic() {
-    let input: string;
-
     console.log('ax^2+bx+c \n');
 
     while (true) {
-      input = question('a, b, c: ');
-      if (input === 'r') return;
+      if (this.inputReader('a, b, c: ')) return;
 
-      Logic.quadraticLogic(input);
+      Logic.quadraticLogic(this.input);
     }
   }
 
   static log() {
-    let input: string;
-
     console.log('a: base, b: number \n');
 
     while (true) {
-      input = question('a, b: ');
-      if (input === 'r') return;
+      if (this.inputReader('a, b: ')) return;
 
-      Logic.logLogic(input);
+      Logic.logLogic(this.input);
+    }
+  }
+
+  static progression() {
+    const progres: string = question('Arithmetic or Geometric? [a/g] ');
+
+    switch (progres) {
+      case 'a':
+        const funcA: string = question('\nN-th element or Area? [n/a] ');
+
+        switch (funcA) {
+          case 'n':
+            console.log('\na1: firstElement, d: difference, n: elementNumber\n');
+
+            while (true) {
+              if (this.inputReader('a1, d, n: ')) return;
+
+              Logic.progressionLogic(progres, this.input);
+            }
+
+          case 'a':
+            console.log('\na1: firstElement, an: lastElement, n: areaSize\n');
+
+            while (true) {
+              if (this.inputReader('a1, an, n: ')) return;
+
+              Logic.progressionAreaLogic(progres, this.input);
+            }
+
+          default:
+            break;
+        }
+
+      case 'g':
+        let funcG: string = question('\nN-th element or Area? [n/a] ');
+
+        switch (funcG) {
+          case 'n':
+            console.log('\nb1: firstElement, q: denominator, n: elementNumber\n');
+
+            while (true) {
+              if (this.inputReader('b1, q, n: ')) return;
+
+              Logic.progressionLogic(progres, this.input);
+            }
+
+          case 'a':
+            console.log('\nb1: firstElement, q: denominator, n: areaSize\n');
+
+            while (true) {
+              if (this.inputReader('b1, q, n: ')) return;
+
+              Logic.progressionAreaLogic(progres, this.input);
+            }
+
+          default:
+            break;
+        }
+
+      default:
+        return;
     }
   }
 
   static node() {
-    let input: string;
-
     console.log('Welcome to Node.js. \n');
 
     while (true) {
-      input = question('> ');
-      if (input === 'r') return;
+      if (this.inputReader('> ')) return;
 
-      Logic.nodeLogic(input);
+      Logic.nodeLogic(this.input);
     }
   }
 }
